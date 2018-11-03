@@ -34,6 +34,7 @@ public class PlayerAttacks : MonoBehaviour {
 
     public Transform attackPos;
     public Transform lowAttackPos;
+    public Transform highAttackPos;
     public LayerMask whatIsEnemies;
     public float attackRange;
     public int damage;
@@ -44,6 +45,7 @@ public class PlayerAttacks : MonoBehaviour {
 
     Attack neutralGround;
     Attack slide;
+    Attack uppercut;
 
     Attack currentAttack;
     int attackState;
@@ -77,6 +79,19 @@ public class PlayerAttacks : MonoBehaviour {
         slide.activeTime = 0.3f;
         slide.recoveryTime = 0.5f;
         slide.animationState = AnimationStates.SLIDE;
+
+        //fix momentum and knockback, refer to HighAttackPos somewhere? ask peter
+        uppercut = new Attack();
+        uppercut.location = highAttackPos;
+        uppercut.momentum = new Vector2(15f, 0f);
+        uppercut.knockback = new Vector2(4f, 10f);
+        uppercut.knockbackTime = 0.3f;
+        uppercut.damage = 7;
+
+        uppercut.initTime = 0.05f;
+        uppercut.activeTime = 0.3f;
+        uppercut.recoveryTime = 0.5f;
+        uppercut.animationState = AnimationStates.UPPERCAT;
 
     }
 
@@ -136,6 +151,10 @@ public class PlayerAttacks : MonoBehaviour {
                     if (Input.GetAxis("Vertical_" + joystickID) < -0.5)
                     {
                         currentAttack = slide;
+                    }
+                    else if (Input.GetAxis("Vertical_" + joystickID) > 0.5)
+                    {
+                        currentAttack = uppercut;
                     }
                     else
                     {
