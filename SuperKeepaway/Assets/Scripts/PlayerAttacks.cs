@@ -160,7 +160,10 @@ public class PlayerAttacks : MonoBehaviour {
                 foreach (Collider2D puffer in puffers)
                 {
                     PufferControl puf = puffer.GetComponent<PufferControl>();
-                    
+
+                    if (puf.team != playerControl.team)
+                    {
+                        puf.team = playerControl.team;
                         hitSource.Play();
                         Debug.Log("hit");
 
@@ -169,8 +172,7 @@ public class PlayerAttacks : MonoBehaviour {
                             currentAttack.knockback.y);
                         puf.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
                             currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
-                    
-                    //  enemiesToDamage[i].GetComponent<Player>().TakeDamage(damage);
+                    }
                 }
                 timeBtwAttack -= Time.deltaTime;
                 if (timeBtwAttack < -currentAttack.activeTime)

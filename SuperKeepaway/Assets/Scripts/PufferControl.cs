@@ -29,19 +29,24 @@ public class PufferControl : MonoBehaviour {
         switch (team)
         {
             case 1:
-                aura.color = new Color(245, 153, 229);
+                //aura.color = new Color(245, 153, 229, 255);
+                aura.color = Color.magenta;
                 break;
             case 2:
-                aura.color = new Color(0, 154, 217);
+                //aura.color = new Color(0, 154, 217);
+                aura.color = Color.cyan;
                 break;
             case 3:
-                aura.color = new Color(248, 144, 92);
+                //aura.color = new Color(248, 144, 92);
+                aura.color = Color.yellow;
                 break;
             case 4:
-                aura.color = new Color(99, 111, 232);
+                //aura.color = new Color(99, 111, 232);
+                aura.color = Color.blue;
                 break;
             default:
-                aura.color = new Color(200, 210, 220);
+                //aura.color = new Color(200, 210, 220);
+                aura.color = Color.white;
                 break;
         }
         
@@ -65,6 +70,8 @@ public class PufferControl : MonoBehaviour {
             knockbackTime -= Time.deltaTime;
             GetComponent<Rigidbody2D>().AddForce(knockbackDir);
             animator.SetInteger("state", 1);
+
+            knockbackDir += Vector2.up * 0.05f;
 
             transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(knockbackDir.y, knockbackDir.x)*Mathf.Rad2Deg, Vector3.forward);
         }
