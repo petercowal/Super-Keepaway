@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: catpunch
+  m_Name: upperCAT
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,9 +19,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: eae79a82af1d79c47aafe3cce1257c21, type: 3}
+      value: {fileID: 21300000, guid: 7e9ab821bed663b4d9705c46ff8973d7, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: bfc146308265dd545a02c03668ddfa6b, type: 3}
+      value: {fileID: 21300000, guid: f612d051d706b8740aa7aa2aad006b75, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -41,8 +41,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: eae79a82af1d79c47aafe3cce1257c21, type: 3}
-    - {fileID: 21300000, guid: bfc146308265dd545a02c03668ddfa6b, type: 3}
+    - {fileID: 21300000, guid: 7e9ab821bed663b4d9705c46ff8973d7, type: 3}
+    - {fileID: 21300000, guid: f612d051d706b8740aa7aa2aad006b75, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
