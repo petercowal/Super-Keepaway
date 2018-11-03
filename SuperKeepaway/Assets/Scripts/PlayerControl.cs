@@ -18,8 +18,13 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody2D rb;
     private CapsuleCollider2D col;
 
+    public Transform groundCheck;
 
     public string joystickID = "1";
+
+    public int team = 1;
+
+    public float knockbackTime = 0f;
 
     // Use this for initialization
     void Start () {
@@ -29,7 +34,7 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (grounded)
+        if (grounded && knockbackTime <= 0f)
         {
             if (Input.GetButtonDown("Jump_" + joystickID))
             {
@@ -40,61 +45,72 @@ public class PlayerControl : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        grounded = Physics2D.BoxCast(transform.position, col.size, 0, Vector2.down, 0.05f, LayerMask.GetMask("Ground"));
-
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, LayerMask.GetMask("Ground"));
 
         float h = Input.GetAxis("Horizontal_" + joystickID);
 
-        if (Mathf.Abs(h) > 0.5f)
+        if (knockbackTime <= 0f)
         {
-            if (grounded)
-            {
-                rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
-            }
-            else
-            {
-                rb.AddForce(Mathf.Sign(h) * airAccelerate * Vector2.right);
-                if (Mathf.Abs(rb.velocity.x) > runSpeed)
-                {
-                    rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * runSpeed, rb.velocity.y);
-                }
-            }
-        }
-        else if (grounded)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        } else
-        {
-            if (Mathf.Abs(rb.velocity.x) > 0.1f)
-                rb.AddForce(-Mathf.Sign(rb.velocity.x) * airAccelerate * Vector2.right);
-        }
 
-        if (grounded)
-        {
-            rb.gravityScale = 3;
-            if (jump)
+            if (Mathf.Abs(h) > 0.5f)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-                jump = false;
-            }
-        }
-        else
-        {
-            if (rb.velocity.y > 0 )
-            {
-                if (Input.GetButton("Jump_" + joystickID) && rb.velocity.y > 3)
+
+                transform.localScale = new Vector2(Mathf.Sign(h) * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+
+                if (grounded)
                 {
-                    rb.gravityScale = 2;
+                    rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
                 }
                 else
                 {
-                    rb.gravityScale = 10;
+                    rb.AddForce(Mathf.Sign(h) * airAccelerate * Vector2.right);
+                    if (Mathf.Abs(rb.velocity.x) > runSpeed)
+                    {
+                        rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * runSpeed, rb.velocity.y);
+                    }
+                }
+            }
+            else if (grounded)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+            else
+            {
+                if (Mathf.Abs(rb.velocity.x) > 0.1f)
+                    rb.AddForce(-Mathf.Sign(rb.velocity.x) * airAccelerate * Vector2.right);
+            }
+
+            if (grounded)
+            {
+                rb.gravityScale = 3;
+                if (jump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                    jump = false;
                 }
             }
             else
             {
-                rb.gravityScale = 4;
+                if (rb.velocity.y > 0)
+                {
+                    if (Input.GetButton("Jump_" + joystickID) && rb.velocity.y > 3)
+                    {
+                        rb.gravityScale = 2;
+                    }
+                    else
+                    {
+                        rb.gravityScale = 10;
+                    }
+                }
+                else
+                {
+                    rb.gravityScale = 4;
+                }
             }
+        } else
+        {
+            rb.gravityScale = 2;
+            knockbackTime -= Time.deltaTime;
         }
     }
 }
