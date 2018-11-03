@@ -25,9 +25,11 @@ public class PlayerAttacks : MonoBehaviour {
 
     public AudioClip hitClip;
     public AudioClip missClip;
+    //public AudioClip breakGlassClip;
 
     public AudioSource hitSource;
     public AudioSource missSource;
+    //public AudioSource breakGlassSource;
 
     private float timeBtwAttack;
 	public float startTimeBtwAttack;
@@ -57,6 +59,7 @@ public class PlayerAttacks : MonoBehaviour {
     {
         hitSource.clip = hitClip;
         missSource.clip = missClip;
+        //breakGlassSource.clip = breakGlassClip;
 
         playerControl = GetComponent<PlayerControl>();
 
@@ -133,6 +136,7 @@ public class PlayerAttacks : MonoBehaviour {
                         {
                             // BREAK!!!!
                             Instantiate(breakEffect);
+                            hitSource.Play();
                             if (enemy.breakPoint > 0) enemy.breakPoint -= 100;
 
                             enemy.knockbackTime = 2f;
