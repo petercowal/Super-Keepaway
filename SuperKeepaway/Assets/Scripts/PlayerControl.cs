@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class AnimationStates
+{
+    public static int IDLE = 0;
+    public static int RUN = 1;
+    public static int CROUCH = 2;
+    public static int DEFENSE = 3;
+    public static int KNOCKBACK = 4;
+    public static int STUNNED = 5;
+    public static int UPPERCAT = 6;
+    public static int PUNCH = 7;
+    public static int JUMP = 8;
+    public static int FALL = 9;
+    public static int SLIDE = 10;
+}
+
 public class PlayerControl : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
@@ -40,13 +56,22 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (grounded && knockbackTime <= 0f)
+
+        if (knockbackTime <= 0f)
         {
-            if (Input.GetButtonDown("Jump_" + joystickID))
+            if (grounded)
             {
-                jump = true;
+                if (Input.GetButtonDown("Jump_" + joystickID))
+                {
+                    jump = true;
+                }
             }
         }
+        else
+        {
+            animationState = AnimationStates.KNOCKBACK;
+        }
+
         animator.SetInteger("state", animationState);
     }
 
@@ -67,7 +92,7 @@ public class PlayerControl : MonoBehaviour {
                 if (grounded)
                 {
                     rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
-                    animationState = 1;
+                    animationState = AnimationStates.RUN;
                 }
                 else
                 {
@@ -80,7 +105,7 @@ public class PlayerControl : MonoBehaviour {
             }
             else if (grounded)
             {
-                animationState = 0;
+                animationState = AnimationStates.IDLE;
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
             else
@@ -102,6 +127,7 @@ public class PlayerControl : MonoBehaviour {
             {
                 if (rb.velocity.y > 0)
                 {
+                    animationState = AnimationStates.JUMP;
                     if (Input.GetButton("Jump_" + joystickID) && rb.velocity.y > 3)
                     {
                         rb.gravityScale = 2;
@@ -113,6 +139,7 @@ public class PlayerControl : MonoBehaviour {
                 }
                 else
                 {
+                    animationState = AnimationStates.FALL;
                     rb.gravityScale = 4;
                 }
             }
