@@ -78,7 +78,7 @@ public class PlayerAttacks : MonoBehaviour {
         slide.recoveryTime = 0.5f;
         slide.animationState = AnimationStates.SLIDE;
 
-        //fix momentum and knockback, refer to HighAttackPos somewhere? ask peter
+        //TODO: balance momentum and knockback
         uppercut = new Attack();
         uppercut.location = highAttackPos;
         uppercut.momentum = new Vector2(15f, 0f);
@@ -128,6 +128,20 @@ public class PlayerAttacks : MonoBehaviour {
                     {
                         missSource.Play();
                     }
+                    //  enemiesToDamage[i].GetComponent<Player>().TakeDamage(damage);
+                }
+                Collider2D[] puffers = Physics2D.OverlapCircleAll(currentAttack.location.position, attackRange, LayerMask.GetMask("Puffer"));
+                foreach (Collider2D puffer in puffers)
+                {
+                    PufferControl puf = puffer.GetComponent<PufferControl>();
+                    
+                        hitSource.Play();
+                        Debug.Log("hit");
+
+                        puf.knockbackTime = currentAttack.knockbackTime; //stun time
+                        puf.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
+                            currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
+                    
                     //  enemiesToDamage[i].GetComponent<Player>().TakeDamage(damage);
                 }
                 timeBtwAttack -= Time.deltaTime;
