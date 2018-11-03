@@ -10,6 +10,9 @@ public class CamShake : MonoBehaviour
 
     public Camera mainCamera;
 
+
+    public Transform[] trackedObjects;
+
    // void OnCollisionEnter2D(Collision2D coll)
    // {
 
@@ -22,6 +25,21 @@ public class CamShake : MonoBehaviour
     void Start()
     {
         originalCameraPosition = mainCamera.transform.position;
+    }
+
+    void Update()
+    {
+        float xsum = 0;
+        foreach (Transform t in trackedObjects)
+        {
+            xsum += t.position.x;
+        }
+        xsum /= trackedObjects.Length;
+
+        xsum = Mathf.Clamp(xsum, -3.4f, 3.4f);
+
+        originalCameraPosition += Vector3.right * (xsum - originalCameraPosition.x) * 0.1f;
+        transform.position += Vector3.right * (xsum - transform.position.x) * 0.1f;
     }
 
     public void StartCameraShake(float amt, float duration)

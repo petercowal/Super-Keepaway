@@ -86,10 +86,10 @@ public class PlayerAttacks : MonoBehaviour {
         //TODO: balance momentum and knockback
         uppercut = new Attack();
         uppercut.location = highAttackPos;
-        uppercut.momentum = new Vector2(15f, 0f);
+        uppercut.momentum = new Vector2(0f, 7.5f);
         uppercut.knockback = new Vector2(4f, 10f);
         uppercut.knockbackTime = 0.3f;
-        uppercut.damage = 7;
+        uppercut.damage = 15;
 
         uppercut.initTime = 0.05f;
         uppercut.activeTime = 0.3f;
