@@ -655,11 +655,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.85
+      value: -8.46
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.83
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -687,7 +687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.y
@@ -1119,6 +1119,7 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.4
   damage: 1
+  breakEffect: {fileID: 0}
 --- !u!50 &629883018
 Rigidbody2D:
   serializedVersion: 4
@@ -1364,11 +1365,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.85
+      value: -6.76
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.83
+      value: 4.48
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1396,7 +1397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.y
@@ -1606,6 +1607,7 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.4
   damage: 1
+  breakEffect: {fileID: 0}
 --- !u!50 &893459047
 Rigidbody2D:
   serializedVersion: 4
@@ -1825,6 +1827,7 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.4
   damage: 1
+  breakEffect: {fileID: 0}
 --- !u!50 &1041705633
 Rigidbody2D:
   serializedVersion: 4
@@ -2528,11 +2531,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.85
+      value: -4.76
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.83
+      value: 4.47
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2560,7 +2563,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4301564831076882, guid: 7f22f920418d06a47bc233857c6ccdc6, type: 2}
       propertyPath: m_LocalScale.y
