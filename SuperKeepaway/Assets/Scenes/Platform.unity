@@ -1405,6 +1405,7 @@ MonoBehaviour:
   team: 1
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 121810488}
@@ -1852,6 +1853,7 @@ MonoBehaviour:
   team: 2
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 1136218585}

@@ -50,6 +50,9 @@ public class PlayerAttacks : MonoBehaviour {
     Attack currentAttack;
     int attackState;
 
+
+    public GameObject breakEffect;
+
     void Start()
     {
         hitSource.clip = hitClip;
@@ -129,6 +132,7 @@ public class PlayerAttacks : MonoBehaviour {
                         if (enemy.health < enemy.breakPoint)
                         {
                             // BREAK!!!!
+                            Instantiate(breakEffect);
                             if (enemy.breakPoint > 0) enemy.breakPoint -= 100;
 
                             enemy.knockbackTime = 2f;
