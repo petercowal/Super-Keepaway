@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour {
 
     private bool grounded = false;
     private Rigidbody2D rb;
-    private BoxCollider2D col;
+    private CapsuleCollider2D col;
 
 
     public string joystickID = "1";
@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
+        col = GetComponent<CapsuleCollider2D>();
 	}
 	
 	// Update is called once per frame
