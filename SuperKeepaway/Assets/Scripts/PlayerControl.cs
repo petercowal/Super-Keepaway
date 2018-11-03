@@ -15,6 +15,9 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody2D rb;
     private BoxCollider2D col;
 
+
+    public string joystickID = "1";
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -25,7 +28,7 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
         if (grounded)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump_" + joystickID))
             {
                 jump = true;
             }
@@ -37,7 +40,7 @@ public class PlayerControl : MonoBehaviour {
         grounded = Physics2D.BoxCast(transform.position, col.size, 0, Vector2.down, 0.05f, LayerMask.GetMask("Ground"));
 
 
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("Horizontal_" + joystickID);
 
         if (Mathf.Abs(h) > 0.5f)
         {
@@ -61,7 +64,7 @@ public class PlayerControl : MonoBehaviour {
         {
             if (rb.velocity.y > 0 )
             {
-                if (Input.GetButton("Jump"))
+                if (Input.GetButton("Jump_" + joystickID))
                 {
                     rb.gravityScale = 2;
                 }
