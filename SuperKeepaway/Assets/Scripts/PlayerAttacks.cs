@@ -12,10 +12,13 @@ public class PlayerAttacks : MonoBehaviour {
     public float attackRange;
     public int damage;
 
-    public string joystickID = "1";
+    private string joystickID = "1";
+
 
 	void Update () {
-        
+
+        joystickID = GetComponent<PlayerControl>().joystickID;
+
         if (timeBtwAttack <= 0){
             
             if (Input.GetButtonDown("Attack_"+joystickID)){

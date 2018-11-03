@@ -356,10 +356,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1412707946}
   - component: {fileID: 1412707945}
-  - component: {fileID: 1412707944}
   - component: {fileID: 1412707943}
   - component: {fileID: 1412707948}
   - component: {fileID: 1412707947}
+  - component: {fileID: 1412707944}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -387,31 +387,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &1412707944
-BoxCollider2D:
+--- !u!70 &1412707944
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412707942}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 340bd865e74b8a64eb43f667ae5b1982, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Direction: 0
 --- !u!212 &1412707945
 SpriteRenderer:
   m_ObjectHideFlags: 0
