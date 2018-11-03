@@ -115,7 +115,7 @@ public class PlayerAttacks : MonoBehaviour {
                 foreach (Collider2D enemyCollider in enemiesToDamage)
                 {
                     PlayerControl enemy = enemyCollider.GetComponent<PlayerControl>();
-                    if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - 0.2f)
+                    if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - 0.2f && !enemy.isBlocking)
                     {
                         shake.StartCameraShake(0.1f, 0.2f);
                         hitSource.Play();

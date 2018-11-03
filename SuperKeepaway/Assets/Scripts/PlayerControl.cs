@@ -45,6 +45,8 @@ public class PlayerControl : MonoBehaviour {
 
     public bool canMove = true;
 
+    public bool isBlocking = false;
+
     public int animationState = 0;
 
     private Animator animator;
@@ -131,6 +133,17 @@ public class PlayerControl : MonoBehaviour {
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                     jump = false;
+                }
+                //write code for block here
+                if (Input.GetButton("Block_" + joystickID))
+                {
+                    isBlocking = true;
+                    animationState = AnimationStates.DEFENSE;
+                    rb.velocity = Vector2.zero;
+                }
+                else
+                {
+                    isBlocking = false;
                 }
             }
             else
