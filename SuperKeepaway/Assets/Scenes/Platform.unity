@@ -1101,6 +1101,7 @@ Transform:
   - {fileID: 670464239}
   - {fileID: 2000209221}
   - {fileID: 124411262}
+  - {fileID: 1890459656}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1113,8 +1114,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d150dd4871a5af44d916c69229e36ff9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
   accelerate: 100
@@ -1137,8 +1138,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c66e3a33acd4e724a99dfdfb31078c24, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   hitClip: {fileID: 8300000, guid: aaf434779b2b77746954b40d40294ca2, type: 3}
   missClip: {fileID: 8300000, guid: 84b6471297987ef4ba71337e196d96d8, type: 3}
   hitSource: {fileID: 1486199929}
@@ -1146,6 +1147,7 @@ MonoBehaviour:
   startTimeBtwAttack: 0.3
   attackPos: {fileID: 940482506}
   lowAttackPos: {fileID: 124411262}
+  highAttackPos: {fileID: 1890459656}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
@@ -1165,7 +1167,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1346,7 +1348,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1459,7 +1461,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -1487,8 +1489,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d150dd4871a5af44d916c69229e36ff9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
   accelerate: 100
@@ -1511,8 +1513,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c66e3a33acd4e724a99dfdfb31078c24, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   hitClip: {fileID: 8300000, guid: aaf434779b2b77746954b40d40294ca2, type: 3}
   missClip: {fileID: 0}
   hitSource: {fileID: 323431822}
@@ -1520,6 +1522,7 @@ MonoBehaviour:
   startTimeBtwAttack: 0.3
   attackPos: {fileID: 1339612791}
   lowAttackPos: {fileID: 844293895}
+  highAttackPos: {fileID: 0}
   whatIsEnemies:
     serializedVersion: 2
     m_Bits: 512
@@ -1608,6 +1611,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1890459655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890459656}
+  m_Layer: 9
+  m_Name: HighAttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1890459656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1890459655}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1412707946}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924759409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,8 +1665,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 786b3421134e5c746b48421a8544b517, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   MusicClip: {fileID: 8300000, guid: aa674405953bdd741b29c153a228207d, type: 3}
   MusicSource: {fileID: 510294331}
 --- !u!4 &1924759411
@@ -1686,7 +1717,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 21300000, guid: e7fe9299c57179448bff781a135cf540, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
