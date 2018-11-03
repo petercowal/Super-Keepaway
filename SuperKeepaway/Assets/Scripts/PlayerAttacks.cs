@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Attack
 {
-
     public Transform location;
     public Vector2 knockback = new Vector2(5f, 2f);
     public float knockbackTime = 0.3f;
@@ -19,13 +18,7 @@ public class Attack
 
 public class PlayerAttacks : MonoBehaviour {
 
-    public AudioClip hitClip;
-    public AudioClip missClip;
-
-    public AudioSource hitSource;
-    public AudioSource missSource;
-
-    private float timeBtwAttack;
+	private float timeBtwAttack;
 	public float startTimeBtwAttack;
 
     public Transform attackPos;
@@ -56,9 +49,6 @@ public class PlayerAttacks : MonoBehaviour {
         neutralGround.recoveryTime = 0.5f;
         neutralGround.animationState = 1;
 
-        hitSource.clip = hitClip;
-        missSource.clip = missClip;
-
     }
 
     void Update () {
@@ -76,7 +66,6 @@ public class PlayerAttacks : MonoBehaviour {
                     PlayerControl enemy = enemyCollider.GetComponent<PlayerControl>();
                     if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - currentAttack.activeTime - 0.1f)
                     {
-                        hitSource.Play();
                         Debug.Log("hit");
 
                         enemy.transform.localScale = new Vector2(Mathf.Abs(enemy.transform.localScale.x) * Mathf.Sign(-transform.localScale.x), enemy.transform.localScale.y);
@@ -84,10 +73,6 @@ public class PlayerAttacks : MonoBehaviour {
                         enemy.knockbackTime = currentAttack.knockbackTime; //stun time
                         enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
                             currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
-                    }
-                    else
-                    {
-                        missSource.Play();
                     }
                     //  enemiesToDamage[i].GetComponent<Player>().TakeDamage(damage);
                 }
