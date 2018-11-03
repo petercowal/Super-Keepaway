@@ -21,6 +21,8 @@ public class Attack
 
 public class PlayerAttacks : MonoBehaviour {
 
+    public CamShake shake;
+
     public AudioClip hitClip;
     public AudioClip missClip;
 
@@ -115,6 +117,7 @@ public class PlayerAttacks : MonoBehaviour {
                     PlayerControl enemy = enemyCollider.GetComponent<PlayerControl>();
                     if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - 0.2f)
                     {
+                        shake.StartCameraShake(0.1f, 0.2f);
                         hitSource.Play();
                         Debug.Log("hit");
 
