@@ -26,10 +26,16 @@ public class PlayerControl : MonoBehaviour {
 
     public float knockbackTime = 0f;
 
+
+    public int animationState = 0;
+
+    private Animator animator;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -41,6 +47,7 @@ public class PlayerControl : MonoBehaviour {
                 jump = true;
             }
         }
+        animator.SetInteger("state", animationState);
     }
 
     private void FixedUpdate()
@@ -60,6 +67,7 @@ public class PlayerControl : MonoBehaviour {
                 if (grounded)
                 {
                     rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
+                    animationState = 1;
                 }
                 else
                 {
@@ -72,6 +80,7 @@ public class PlayerControl : MonoBehaviour {
             }
             else if (grounded)
             {
+                animationState = 0;
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
             else

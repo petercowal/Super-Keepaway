@@ -244,6 +244,7 @@ MonoBehaviour:
   joystickID: 2
   team: 2
   knockbackTime: 0
+  animationState: 0
 --- !u!114 &411083978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,6 +716,7 @@ MonoBehaviour:
   joystickID: 1
   team: 1
   knockbackTime: 0
+  animationState: 0
 --- !u!114 &1412707948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,7 +744,7 @@ Animator:
   m_GameObject: {fileID: 1412707942}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e5c33038db6b4134ea4c908f86748a61, type: 2}
+  m_Controller: {fileID: 9100000, guid: a254ff2caa931a047aa2bce579e1f861, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
