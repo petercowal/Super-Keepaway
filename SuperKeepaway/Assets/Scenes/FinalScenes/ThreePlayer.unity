@@ -256,7 +256,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 213813478}
-  - component: {fileID: 213813479}
   m_Layer: 9
   m_Name: BasicAttackPos
   m_TagString: Untagged
@@ -277,19 +276,6 @@ Transform:
   m_Father: {fileID: 1041705635}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &213813479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213813477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442e106a3a5f1149bcea45a42614f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
-  mainCamera: {fileID: 1215151211}
 --- !u!1 &268937059
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +838,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 524423870}
-  - component: {fileID: 524423871}
   m_Layer: 9
   m_Name: BasicAttackPos
   m_TagString: Untagged
@@ -873,19 +858,6 @@ Transform:
   m_Father: {fileID: 629883020}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &524423871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524423869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442e106a3a5f1149bcea45a42614f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
-  mainCamera: {fileID: 1215151211}
 --- !u!1 &565868837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1089,7 @@ MonoBehaviour:
   team: 3
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 1842596889}
@@ -1603,6 +1576,7 @@ MonoBehaviour:
   team: 1
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 432890413}
@@ -1821,6 +1795,7 @@ MonoBehaviour:
   team: 2
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 140369113}
@@ -2267,6 +2242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeAmt: 0
   mainCamera: {fileID: 1215151211}
+  trackedObjects: []
 --- !u!1 &1248070111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,7 +2613,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1526558248}
-  - component: {fileID: 1526558249}
   m_Layer: 9
   m_Name: BasicAttackPos
   m_TagString: Untagged
@@ -2658,19 +2633,6 @@ Transform:
   m_Father: {fileID: 893459049}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1526558249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526558247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442e106a3a5f1149bcea45a42614f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
-  mainCamera: {fileID: 1215151211}
 --- !u!1 &1613949270
 GameObject:
   m_ObjectHideFlags: 0

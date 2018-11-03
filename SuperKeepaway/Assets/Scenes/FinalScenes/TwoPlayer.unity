@@ -555,6 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeAmt: 0
   mainCamera: {fileID: 344640645}
+  trackedObjects: []
 --- !u!1 &411783127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656529199}
-  - component: {fileID: 656529200}
   m_Layer: 9
   m_Name: BasicAttackPos
   m_TagString: Untagged
@@ -1147,19 +1147,6 @@ Transform:
   m_Father: {fileID: 1031469516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &656529200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 656529198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442e106a3a5f1149bcea45a42614f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
-  mainCamera: {fileID: 344640645}
 --- !u!1 &985735280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1325,7 @@ MonoBehaviour:
   team: 2
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 1322304078}
@@ -1782,7 +1770,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697396935}
-  - component: {fileID: 1697396936}
   m_Layer: 9
   m_Name: BasicAttackPos
   m_TagString: Untagged
@@ -1803,19 +1790,6 @@ Transform:
   m_Father: {fileID: 1807451134}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1697396936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1697396934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442e106a3a5f1149bcea45a42614f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmt: 0
-  mainCamera: {fileID: 344640645}
 --- !u!1 &1698436556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1925,7 @@ MonoBehaviour:
   team: 1
   knockbackTime: 0
   canMove: 1
+  isBlocking: 0
   animationState: 0
   health: 300
   healthBar: {fileID: 1533592503}
