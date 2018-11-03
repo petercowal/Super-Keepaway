@@ -142,6 +142,8 @@ public class PlayerAttacks : MonoBehaviour {
                         Debug.Log("hit");
 
                         puf.knockbackTime = currentAttack.knockbackTime; //stun time
+                        puf.knockbackDir = new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
+                            currentAttack.knockback.y);
                         puf.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
                             currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
                     
