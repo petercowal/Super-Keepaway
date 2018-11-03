@@ -49,6 +49,12 @@ public class PlayerControl : MonoBehaviour {
 
     private Animator animator;
 
+    public float health = 300;
+
+    public SegmentBar healthBar;
+
+    public float breakPoint = 200;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -73,6 +79,8 @@ public class PlayerControl : MonoBehaviour {
         {
             animationState = AnimationStates.KNOCKBACK;
         }
+
+        healthBar.value = health / 100;
 
         animator.SetInteger("state", animationState);
     }

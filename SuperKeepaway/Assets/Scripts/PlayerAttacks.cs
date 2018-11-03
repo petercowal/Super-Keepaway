@@ -123,9 +123,24 @@ public class PlayerAttacks : MonoBehaviour {
 
                         enemy.transform.localScale = new Vector2(Mathf.Abs(enemy.transform.localScale.x) * Mathf.Sign(-transform.localScale.x), enemy.transform.localScale.y);
 
-                        enemy.knockbackTime = currentAttack.knockbackTime; //stun time
-                        enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
-                            currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
+
+                        enemy.health -= currentAttack.damage;
+
+                        if (enemy.health < enemy.breakPoint)
+                        {
+                            // BREAK!!!!
+                            if (enemy.breakPoint > 0) enemy.breakPoint -= 100;
+
+                            enemy.knockbackTime = 2f;
+                            enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(20 * Mathf.Sign(transform.localScale.x),
+                                20), ForceMode2D.Impulse); //impulse dir
+                        }
+                        else
+                        {
+                            enemy.knockbackTime = currentAttack.knockbackTime; //stun time
+                            enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentAttack.knockback.x * Mathf.Sign(transform.localScale.x),
+                                currentAttack.knockback.y), ForceMode2D.Impulse); //impulse dir
+                        }
                     }
                     else
                     {
