@@ -12,19 +12,23 @@ public class PlayerAttacks : MonoBehaviour {
     public float attackRange;
     public int damage;
 
+    public string joystickID = "1";
+
 	void Update () {
-
+        
         if (timeBtwAttack <= 0){
-
-            if (Input.GetButtonDown("Fire1")){
+            
+            if (Input.GetButtonDown("Attack_"+joystickID)){
+                Debug.Log("attack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                   //  enemiesToDamage[i].GetComponent<Player>().TakeDamage(damage);
                 }
-			}
+                timeBtwAttack = startTimeBtwAttack;
+            }
 
-			timeBtwAttack = startTimeBtwAttack;
+			
 		} else{
 			timeBtwAttack -= Time.deltaTime;
 		}
