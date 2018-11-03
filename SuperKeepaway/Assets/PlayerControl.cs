@@ -8,12 +8,10 @@ public class PlayerControl : MonoBehaviour {
     public bool jump = false;
     public float accelerate = 100f;
     public float airAccelerate = 10f;
-    public float runSpeed = 20f;
+    public float runSpeed = 10f;
     public float jumpSpeed = 10f;
 
-    public Transform groundCheck;
-
-    public bool grounded = false;
+    private bool grounded = false;
     private Rigidbody2D rb;
     private BoxCollider2D col;
 
@@ -25,7 +23,13 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (grounded)
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -47,7 +51,7 @@ public class PlayerControl : MonoBehaviour {
         if (grounded)
         {
             rb.gravityScale = 3;
-            if (Input.GetButtonDown("Jump"))
+            if (jump)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                 jump = false;
@@ -71,9 +75,5 @@ public class PlayerControl : MonoBehaviour {
                 rb.gravityScale = 4;
             }
         }
-
-        
-
-        
     }
 }

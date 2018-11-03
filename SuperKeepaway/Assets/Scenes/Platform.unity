@@ -430,6 +430,6 @@ MonoBehaviour:
   accelerate: 100
   airAccelerate: 10
   runSpeed: 10
-  jumpSpeed: 15
+  jumpSpeed: 10
   groundCheck: {fileID: 0}
   grounded: 0
