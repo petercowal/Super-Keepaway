@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour {
     public float runSpeed = 10f;
     public float jumpSpeed = 12f;
 
-    private bool grounded = false;
+    [HideInInspector] public bool grounded = false;
 
     private float baseAirVelocity;
 
@@ -42,6 +42,8 @@ public class PlayerControl : MonoBehaviour {
 
     public float knockbackTime = 0f;
 
+
+    public bool canMove = true;
 
     public int animationState = 0;
 
@@ -59,7 +61,7 @@ public class PlayerControl : MonoBehaviour {
 
         if (knockbackTime <= 0f)
         {
-            if (grounded)
+            if (grounded && canMove)
             {
                 if (Input.GetButtonDown("Jump_" + joystickID))
                 {
@@ -81,7 +83,7 @@ public class PlayerControl : MonoBehaviour {
 
         float h = Input.GetAxis("Horizontal_" + joystickID);
 
-        if (knockbackTime <= 0f)
+        if (knockbackTime <= 0f && canMove)
         {
 
             if (Mathf.Abs(h) > 0.5f)
@@ -143,8 +145,10 @@ public class PlayerControl : MonoBehaviour {
                     rb.gravityScale = 4;
                 }
             }
-        } else
+        }
+        else if (knockbackTime > 0)
         {
+            canMove = true;
             rb.gravityScale = 2;
             knockbackTime -= Time.deltaTime;
         }

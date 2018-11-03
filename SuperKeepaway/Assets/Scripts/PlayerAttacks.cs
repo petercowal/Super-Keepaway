@@ -6,6 +6,9 @@ using UnityEngine;
 public class Attack
 {
     public Transform location;
+
+    public Vector2 momentum = new Vector2(5f, 0f);
+
     public Vector2 knockback = new Vector2(5f, 2f);
     public float knockbackTime = 0.3f;
     public float damage = 10;
@@ -28,6 +31,7 @@ public class PlayerAttacks : MonoBehaviour {
 	public float startTimeBtwAttack;
 
     public Transform attackPos;
+    public Transform lowAttackPos;
     public LayerMask whatIsEnemies;
     public float attackRange;
     public int damage;
@@ -37,9 +41,10 @@ public class PlayerAttacks : MonoBehaviour {
     private PlayerControl playerControl;
 
     Attack neutralGround;
+    Attack slide;
 
     Attack currentAttack;
-    bool attacking;
+    int attackState;
 
     void Start()
     {
@@ -55,25 +60,45 @@ public class PlayerAttacks : MonoBehaviour {
         neutralGround.damage = 10;
 
         neutralGround.initTime = 0.1f;
-        neutralGround.recoveryTime = 0.5f;
-        neutralGround.animationState = 1;
+        neutralGround.recoveryTime = 0.3f;
+        neutralGround.animationState = AnimationStates.PUNCH;
+
+
+        slide = new Attack();
+        slide.location = lowAttackPos;
+        slide.momentum = new Vector2(15f, 0f);
+        slide.knockback = new Vector2(4f, 10f);
+        slide.knockbackTime = 0.3f;
+        slide.damage = 5;
+
+        slide.initTime = 0.05f;
+        slide.activeTime = 0.3f;
+        slide.recoveryTime = 0.5f;
+        slide.animationState = AnimationStates.SLIDE;
 
     }
 
     void Update () {
 
         joystickID = playerControl.joystickID;
-
+        Rigidbody2D rb = transform.GetComponent<Rigidbody2D>();
         if (timeBtwAttack <= 0){
             
-            if (attacking)
+            if (attackState == 1 || attackState == 2)
             {
+                if (attackState == 1)
+                {
+                    attackState = 2;
+                    rb.AddForce(new Vector2(currentAttack.momentum.x * Mathf.Sign(transform.localScale.x),
+                        currentAttack.momentum.y), ForceMode2D.Impulse);
+                }
+
                 Debug.Log("active");
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(currentAttack.location.position, attackRange, whatIsEnemies);
                 foreach (Collider2D enemyCollider in enemiesToDamage)
                 {
                     PlayerControl enemy = enemyCollider.GetComponent<PlayerControl>();
-                    if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - currentAttack.activeTime - 0.1f)
+                    if (enemy.team != playerControl.team && enemy.knockbackTime < currentAttack.knockbackTime - 0.2f)
                     {
                         hitSource.Play();
                         Debug.Log("hit");
@@ -93,25 +118,57 @@ public class PlayerAttacks : MonoBehaviour {
                 timeBtwAttack -= Time.deltaTime;
                 if (timeBtwAttack < -currentAttack.activeTime)
                 {
-                    attacking = false;
+                    attackState = 3;
                     timeBtwAttack = currentAttack.recoveryTime;
                 }
             }
 
-            else if (Input.GetButtonDown("Attack_"+joystickID)){
-                attacking = true;
-                currentAttack = neutralGround;
-                timeBtwAttack = currentAttack.initTime;
+            else {
+                attackState = 0;
+                playerControl.canMove = true;
+                if (Input.GetButtonDown("Attack_" + joystickID))
+                {
+                    attackState = 1;
+
+                    if (Input.GetAxis("Vertical_" + joystickID) < -0.5)
+                    {
+                        currentAttack = slide;
+                    }
+                    else
+                    {
+                        currentAttack = neutralGround;
+                    }
+                    
+
+
+
+                    timeBtwAttack = currentAttack.initTime;
+                    playerControl.canMove = false;
+                    playerControl.animationState = currentAttack.animationState;
+                }
             }
 			
 		} else{
 			timeBtwAttack -= Time.deltaTime;
 		}
-	}
+
+        if (attackState != 0 && playerControl.grounded && Mathf.Abs(rb.velocity.x) > 0.1f)
+        {
+            rb.AddForce(Vector2.left * Mathf.Sign(rb.velocity.x) * 20);
+        }
+
+        if (playerControl.knockbackTime > 0)
+        {
+            attackState = 0;
+        }
+    }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+        if (currentAttack != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(currentAttack.location.position, attackRange);
+        }
     }
 }
