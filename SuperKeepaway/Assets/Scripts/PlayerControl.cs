@@ -7,11 +7,14 @@ public class PlayerControl : MonoBehaviour {
     [HideInInspector] public bool facingRight = true;
     public bool jump = false;
     public float accelerate = 100f;
-    public float airAccelerate = 10f;
+    public float airAccelerate = 25f;
     public float runSpeed = 10f;
-    public float jumpSpeed = 10f;
+    public float jumpSpeed = 12f;
 
     private bool grounded = false;
+
+    private float baseAirVelocity;
+
     private Rigidbody2D rb;
     private CapsuleCollider2D col;
 
@@ -44,11 +47,26 @@ public class PlayerControl : MonoBehaviour {
 
         if (Mathf.Abs(h) > 0.5f)
         {
-            rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
+            if (grounded)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(h) * runSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.AddForce(Mathf.Sign(h) * airAccelerate * Vector2.right);
+                if (Mathf.Abs(rb.velocity.x) > runSpeed)
+                {
+                    rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * runSpeed, rb.velocity.y);
+                }
+            }
         }
-        else
+        else if (grounded)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
+        } else
+        {
+            if (Mathf.Abs(rb.velocity.x) > 0.1f)
+                rb.AddForce(-Mathf.Sign(rb.velocity.x) * airAccelerate * Vector2.right);
         }
 
         if (grounded)
@@ -64,7 +82,7 @@ public class PlayerControl : MonoBehaviour {
         {
             if (rb.velocity.y > 0 )
             {
-                if (Input.GetButton("Jump_" + joystickID))
+                if (Input.GetButton("Jump_" + joystickID) && rb.velocity.y > 3)
                 {
                     rb.gravityScale = 2;
                 }
