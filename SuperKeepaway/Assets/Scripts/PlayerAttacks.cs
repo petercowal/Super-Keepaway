@@ -25,9 +25,11 @@ public class PlayerAttacks : MonoBehaviour {
 
     public AudioClip hitClip;
     public AudioClip missClip;
+    //public AudioClip breakGlassClip;
 
     public AudioSource hitSource;
     public AudioSource missSource;
+    //public AudioSource breakGlassSource;
 
     private float timeBtwAttack;
 	public float startTimeBtwAttack;
@@ -50,10 +52,14 @@ public class PlayerAttacks : MonoBehaviour {
     Attack currentAttack;
     int attackState;
 
+
+    public GameObject breakEffect;
+
     void Start()
     {
         hitSource.clip = hitClip;
         missSource.clip = missClip;
+        //breakGlassSource.clip = breakGlassClip;
 
         playerControl = GetComponent<PlayerControl>();
 
@@ -83,10 +89,10 @@ public class PlayerAttacks : MonoBehaviour {
         //TODO: balance momentum and knockback
         uppercut = new Attack();
         uppercut.location = highAttackPos;
-        uppercut.momentum = new Vector2(15f, 0f);
+        uppercut.momentum = new Vector2(0f, 7.5f);
         uppercut.knockback = new Vector2(4f, 10f);
         uppercut.knockbackTime = 0.3f;
-        uppercut.damage = 7;
+        uppercut.damage = 15;
 
         uppercut.initTime = 0.05f;
         uppercut.activeTime = 0.3f;
@@ -129,6 +135,8 @@ public class PlayerAttacks : MonoBehaviour {
                         if (enemy.health < enemy.breakPoint)
                         {
                             // BREAK!!!!
+                            Instantiate(breakEffect);
+                            hitSource.Play();
                             if (enemy.breakPoint > 0) enemy.breakPoint -= 100;
 
                             enemy.knockbackTime = 2f;

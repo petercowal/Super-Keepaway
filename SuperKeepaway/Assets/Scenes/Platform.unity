@@ -1437,6 +1437,8 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.4
   damage: 1
+  breakEffect: {fileID: 1663238714305356, guid: 39949bd49f40bbc4ba81066038728fc2,
+    type: 2}
 --- !u!95 &1412707949
 Animator:
   serializedVersion: 3
@@ -1831,6 +1833,8 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0.4
   damage: 1
+  breakEffect: {fileID: 1663238714305356, guid: 39949bd49f40bbc4ba81066038728fc2,
+    type: 2}
 --- !u!50 &1795282189
 Rigidbody2D:
   serializedVersion: 4
