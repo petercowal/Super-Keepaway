@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour {
     public bool jump = false;
     public float accelerate = 100f;
     public float airAccelerate = 10f;
-    public float runSpeed = 5f;
+    public float runSpeed = 20f;
     public float jumpSpeed = 10f;
 
     public Transform groundCheck;
@@ -25,16 +25,14 @@ public class PlayerControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        grounded = Physics2D.BoxCast(transform.position, col.size, 0, Vector2.down, 0.01f, LayerMask.GetMask("Ground"));
-
-        if (Input.GetButtonDown("Jump") && grounded)
-        {
-            jump = true;
-        }
+        
     }
 
     private void FixedUpdate()
     {
+        grounded = Physics2D.BoxCast(transform.position, col.size, 0, Vector2.down, 0.05f, LayerMask.GetMask("Ground"));
+
+
         float h = Input.GetAxis("Horizontal");
 
         if (Mathf.Abs(h) > 0.5f)
@@ -46,10 +44,36 @@ public class PlayerControl : MonoBehaviour {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
 
-        if (jump)
+        if (grounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-            jump = false;
+            rb.gravityScale = 3;
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                jump = false;
+            }
         }
+        else
+        {
+            if (rb.velocity.y > 0 )
+            {
+                if (Input.GetButton("Jump"))
+                {
+                    rb.gravityScale = 2;
+                }
+                else
+                {
+                    rb.gravityScale = 10;
+                }
+            }
+            else
+            {
+                rb.gravityScale = 4;
+            }
+        }
+
+        
+
+        
     }
 }
